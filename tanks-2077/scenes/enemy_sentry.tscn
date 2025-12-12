@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds5vwayw6mo7v"]
+
+[ext_resource type="Script" uid="uid://xxvkg7kx7db2" path="res://enemy_sentry.gd" id="1_f7veq"]
+[ext_resource type="PackedScene" uid="uid://b8w42e5g56yth" path="res://scenes/Bullet.tscn" id="2_pqnd2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqnd2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h2a1c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifqkb"]
+albedo_color = Color(1, 0.07058824, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+next_pass = SubResource("StandardMaterial3D_ifqkb")
+
+[sub_resource type="BoxMesh" id="BoxMesh_r4oi2"]
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="EnemySentry" type="CharacterBody3D"]
+script = ExtResource("1_f7veq")
+bullet_scene = ExtResource("2_pqnd2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pqnd2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_h2a1c")
+
+[node name="Turret" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turret"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.6729419, -0.63246423)
+mesh = SubResource("BoxMesh_r4oi2")
+
+[node name="Muzzle" type="Marker3D" parent="Turret"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0.6646688, -1.1531729)
