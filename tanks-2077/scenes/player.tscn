@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b067t32u54jyh"]
+
+[ext_resource type="Script" uid="uid://d2i12au65bptc" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(1, 0.07058824, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+next_pass = SubResource("StandardMaterial3D_3vyb7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vyb7"]
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Turret" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turret"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.6729419, -0.63246423)
+mesh = SubResource("BoxMesh_3vyb7")
+
+[node name="Muzzle" type="Marker3D" parent="Turret"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0.6646688, -1.1531729)
