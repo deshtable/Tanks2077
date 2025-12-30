@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://rwfsxhn5kkmb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xrvam"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3ib6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okh8k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+albedo_color = Color(1, 1, 0.58431375, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_okh8k"]
+material = SubResource("StandardMaterial3D_sugp2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifi18"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="FLOOR" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_xrvam")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, 0)
+current = true
+size = 10.154
+
+[node name="WALL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 20, -20, 1.5, 0)
+mesh = SubResource("BoxMesh_i3ib6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WALL"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WALL/StaticBody3D"]
+shape = SubResource("BoxShape3D_okh8k")
+
+[node name="OBSTACLE WALL" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.919735, 1, 0)
+mesh = SubResource("BoxMesh_okh8k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OBSTACLE WALL"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OBSTACLE WALL/StaticBody3D"]
+shape = SubResource("BoxShape3D_ifi18")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, -50)
