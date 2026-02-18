@@ -1,6 +1,10 @@
 [gd_resource type="MeshLibrary" format=3 uid="uid://d8ge0vb7aes1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g36rg"]
+albedo_color = Color(0.092906244, 0.3738951, 0.41565838, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5b2n8"]
+material = SubResource("StandardMaterial3D_g36rg")
 size = Vector3(2, 0.2, 2)
 
 [sub_resource type="Image" id="Image_5b2n8"]
@@ -18,7 +22,11 @@ image = SubResource("Image_5b2n8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgld8"]
 size = Vector3(2, 0.2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu40t"]
+albedo_color = Color(0.96862745, 0.8901961, 0.39215687, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_0yeaj"]
+material = SubResource("StandardMaterial3D_xu40t")
 size = Vector3(2, 2, 2)
 
 [sub_resource type="Image" id="Image_xu40t"]
