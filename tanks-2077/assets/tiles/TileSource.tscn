@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cfl0j1xn2t1ea"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjjxf"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgld8"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgld8"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjjxf"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wydy7"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjjxf"]
+albedo_color = Color(0.19472128, 0.68135995, 0.6623217, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tc1g"]
+size = Vector3(2, 2, 2)
+
+[node name="TileSource" type="Node3D" unique_id=2088589346]
+
+[node name="FLOOR" type="MeshInstance3D" parent="." unique_id=36293744]
+mesh = SubResource("BoxMesh_rjjxf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FLOOR" unique_id=852873314]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/StaticBody3D" unique_id=413515128]
+shape = SubResource("BoxShape3D_jgld8")
+
+[node name="WALL" type="MeshInstance3D" parent="." unique_id=1348812382]
+mesh = SubResource("BoxMesh_jgld8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WALL" unique_id=66505459]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WALL/StaticBody3D" unique_id=1949110344]
+shape = SubResource("BoxShape3D_rjjxf")
+
+[node name="OBSTACLE" type="MeshInstance3D" parent="." unique_id=921975779]
+mesh = SubResource("BoxMesh_wydy7")
+surface_material_override/0 = SubResource("StandardMaterial3D_rjjxf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OBSTACLE" unique_id=129134188]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OBSTACLE/StaticBody3D" unique_id=1947549399]
+shape = SubResource("BoxShape3D_3tc1g")

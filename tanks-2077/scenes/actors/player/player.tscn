@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b067t32u54jyh"]
+
+[ext_resource type="Script" uid="uid://d2i12au65bptc" path="res://scripts/actors/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://b8w42e5g56yth" path="res://scenes/actors/projectiles/Bullet.tscn" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(1, 0.07058824, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+next_pass = SubResource("StandardMaterial3D_3vyb7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vyb7"]
+material = SubResource("StandardMaterial3D_g2els")
+
+[node name="Player" type="CharacterBody3D" unique_id=131771971]
+collision_mask = 5
+script = ExtResource("1_3vyb7")
+bullet_scene = ExtResource("2_g2els")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1584322272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0972862, 0)
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1612788157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0513154, 0)
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Turret" type="Node3D" parent="." unique_id=1471028722]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turret" unique_id=603488440]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 1.4859304, -0.63246423)
+mesh = SubResource("BoxMesh_3vyb7")
+
+[node name="Muzzle" type="Marker3D" parent="Turret" unique_id=2004526278]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0.6646688, -1.1531729)

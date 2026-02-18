@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://fjo6axw7ahmm"]
+
+[ext_resource type="Script" uid="uid://b5jjkidixtrsn" path="res://scripts/game/level_manager.gd" id="1_lyhax"]
+[ext_resource type="PackedScene" uid="uid://b0ka4qha523g1" path="res://scenes/levels/Level_01.tscn" id="2_365ku"]
+[ext_resource type="PackedScene" uid="uid://dvnysaamh76mr" path="res://scenes/levels/Level_02.tscn" id="3_gg4pt"]
+[ext_resource type="PackedScene" uid="uid://d03cxcuvncc4r" path="res://scenes/levels/Level_03.tscn" id="4_365ku"]
+[ext_resource type="PackedScene" uid="uid://b067t32u54jyh" path="res://scenes/actors/player/player.tscn" id="4_wnrko"]
+[ext_resource type="PackedScene" uid="uid://ds5vwayw6mo7v" path="res://scenes/actors/enemies/enemy_sentry.tscn" id="5_qf6a8"]
+
+[node name="Game" type="Node" unique_id=490329684]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=476591651]
+transform = Transform3D(0.8660254, -0.43301272, 0.24999999, 0, 0.49999997, 0.86602545, -0.5, -0.75, 0.43301266, 0, 0, 0)
+light_energy = 1.2
+light_specular = 0.5
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.0
+
+[node name="LevelRoot" type="Node3D" parent="." unique_id=1817635457]
+
+[node name="LevelManager" type="Node3D" parent="." unique_id=884060832]
+script = ExtResource("1_lyhax")
+levels = Array[PackedScene]([ExtResource("2_365ku"), ExtResource("3_gg4pt"), ExtResource("4_365ku")])
+player_scene = ExtResource("4_wnrko")
+sentry_scene = ExtResource("5_qf6a8")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1970773741]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 29.595, 0)
+projection = 1
+current = true
+size = 19.627
